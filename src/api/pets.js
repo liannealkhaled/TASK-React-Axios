@@ -19,10 +19,17 @@ const gettAllPets = async () => {
 
 const getOnePet = async (id) => {
   const res = await instance.get(`/pets/${id}`);
+  return res.data;
 };
 
-// const addOnePet = async (name,type,image,adopt)=>{
-//     const res = await instance.post(${pet.name,pet.id,})
-// }
+const addOnePet = async (name, type, image, adopted) => {
+  const res = await instance.post(`/pet/`, {
+    name: name,
+    type: type,
+    image: image,
+    adopted: adopted,
+  });
+  return res.data;
+};
 
-export { gettAllPets, getOnePet };
+export { gettAllPets, getOnePet, addOnePet };

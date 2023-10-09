@@ -1,15 +1,33 @@
 import React from "react";
 import petsData from "../petsData";
 import { useParams } from "react-router-dom";
+import { getOnePet, addOnePet } from "../api/pets";
+import { useEffect } from "react";
+import { useState } from "react";
+
 const PetDetail = () => {
   // const pet = petsData[0];
   const { petId } = useParams();
+  const [pet, setPet] = useState();
+  // const [name, setName] = useState();
+  // const [type, setType] = useState();
+  // const [image, setImage] = useState();
+  // const [adopted, setAdopted] = useState();
 
-  const pet = petsData.find((pet) => {
-    return petId == pet.id;
-  });
+  const ApiGetone = async () => {
+    const res = await getOnePet();
+    return setPet(res);
+  };
 
-  if (!pet) return <h1>no pet with this id {petId}</h1>;
+  useEffect(() => {
+    ApiGetone();
+  }, []);
+
+  // const pet = petsData.find((pet) => {
+  //   return petId == pet.id;
+  // });
+
+  // if (!pet) return <h1>no pet with this id {petId}</h1>;
 
   return (
     <div className="bg-[#F9E3BE] w-screen h-[100vh] flex justify-center items-center">

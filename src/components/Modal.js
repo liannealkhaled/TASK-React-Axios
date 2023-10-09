@@ -6,6 +6,13 @@ const Modal = ({ show, setShowModal }) => {
   const [type, setType] = useState("");
   const [image, setImage] = useState("");
   const [available, setAvailable] = useState(0);
+
+
+  // const AddName = (e)=>{
+  //   setName(e.target.value)
+
+  } 
+
   if (!show) return "";
   return (
     <div
