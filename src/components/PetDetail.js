@@ -1,7 +1,16 @@
 import React from "react";
 import petsData from "../petsData";
+import { useParams } from "react-router-dom";
 const PetDetail = () => {
-  const pet = petsData[0];
+  // const pet = petsData[0];
+  const { petId } = useParams();
+
+  const pet = petsData.find((pet) => {
+    return petId == pet.id;
+  });
+
+  if (!pet) return <h1>no pet with this id {petId}</h1>;
+
   return (
     <div className="bg-[#F9E3BE] w-screen h-[100vh] flex justify-center items-center">
       <div className="border border-black rounded-md w-[70%] h-[70%] overflow-hidden flex flex-col md:flex-row p-5">
