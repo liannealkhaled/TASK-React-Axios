@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import PetDetail from "./components/PetDetail";
 import PetItem from "./components/PetItem";
 import PetList from "./components/PetList";
+import NotFound from "./NotFound";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="Home" Component={Home}></Route>
         <Route path="PetList" Component={PetList}></Route>
         <Route path="PetDetail/:petId" Component={PetDetail}></Route>
+        <Route path="*" Component={NotFound}></Route>
       </Routes>
     </div>
   );

@@ -21,7 +21,7 @@ const PetList = () => {
 
   useEffect(() => {
     ApiAllPets();
-  }, []);
+  }, [pet]);
 
   // const handleName = async (e)=>{
   //   setName(e.target.value)

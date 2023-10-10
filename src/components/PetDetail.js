@@ -8,14 +8,15 @@ import { useState } from "react";
 const PetDetail = () => {
   // const pet = petsData[0];
   const { petId } = useParams();
-  const [pet, setPet] = useState();
+  const [pet, setPet] = useState({});
   // const [name, setName] = useState();
   // const [type, setType] = useState();
   // const [image, setImage] = useState();
   // const [adopted, setAdopted] = useState();
 
   const ApiGetone = async () => {
-    const res = await getOnePet();
+    const res = await getOnePet(petId);
+    console.log(res);
     return setPet(res);
   };
 
@@ -27,7 +28,7 @@ const PetDetail = () => {
   //   return petId == pet.id;
   // });
 
-  // if (!pet) return <h1>no pet with this id {petId}</h1>;
+  if (!pet) return <h1>no pet with this id {petId}</h1>;
 
   return (
     <div className="bg-[#F9E3BE] w-screen h-[100vh] flex justify-center items-center">

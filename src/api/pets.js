@@ -22,12 +22,12 @@ const getOnePet = async (id) => {
   return res.data;
 };
 
-const addOnePet = async (name, type, image, adopted) => {
-  const res = await instance.post(`/pet/`, {
+const addOnePet = async (name, type, image, available) => {
+  const res = await instance.post(`/pets/`, {
     name: name,
     type: type,
     image: image,
-    adopted: adopted,
+    adopted: available,
   });
   return res.data;
 };
