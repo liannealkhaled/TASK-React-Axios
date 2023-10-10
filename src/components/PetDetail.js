@@ -1,6 +1,6 @@
 import React from "react";
 import petsData from "../petsData";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { getOnePet, addOnePet } from "../api/pets";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -8,7 +8,11 @@ import { useState } from "react";
 const PetDetail = () => {
   // const pet = petsData[0];
   const { petId } = useParams();
+
   const [pet, setPet] = useState({});
+
+  /// here up the use statis an obj{}, the onein the previousstat was array[]
+
   // const [name, setName] = useState();
   // const [type, setType] = useState();
   // const [image, setImage] = useState();
@@ -19,6 +23,7 @@ const PetDetail = () => {
     console.log(res);
     return setPet(res);
   };
+  ////// useeffect to run the code one entering the page
 
   useEffect(() => {
     ApiGetone();
@@ -29,7 +34,8 @@ const PetDetail = () => {
   // });
 
   if (!pet) return <h1>no pet with this id {petId}</h1>;
-
+  // if (!pet) return <Navigate to="/notFound" />;
+  // navigate will send me automatically there , link need to click on it to go there
   return (
     <div className="bg-[#F9E3BE] w-screen h-[100vh] flex justify-center items-center">
       <div className="border border-black rounded-md w-[70%] h-[70%] overflow-hidden flex flex-col md:flex-row p-5">

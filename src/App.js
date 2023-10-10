@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import PetDetail from "./components/PetDetail";
 import PetItem from "./components/PetItem";
 import PetList from "./components/PetList";
-import NotFound from "./NotFound";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (

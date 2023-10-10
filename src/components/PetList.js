@@ -8,11 +8,19 @@ import { useEffect } from "react";
 const PetList = () => {
   const [query, setQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [pet, setPet] = useState([]);
+
+  const [pet, setPet] = useState([]); //////
 
   const petList = pet
     .filter((pet) => pet.name.toLowerCase().includes(query.toLowerCase()))
     .map((pet) => <PetItem pet={pet} key={pet.id} />);
+
+  // useEffect (
+  //   ()=>{
+  //     first
+
+  //     return ()=>{ second }
+  //   }, [third] )
 
   const ApiAllPets = async () => {
     const res = await gettAllPets();
