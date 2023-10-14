@@ -15,7 +15,7 @@ function App() {
         <Route path="Home" Component={Home}></Route>
         <Route path="PetList" Component={PetList}></Route>
         <Route path="PetDetail/:petId" Component={PetDetail}></Route>
-        <Route path="*" Component={NotFound}></Route>
+        {/* <Route path="*" Component={NotFound}></Route> */}
       </Routes>
     </div>
   );

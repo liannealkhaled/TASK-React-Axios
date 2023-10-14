@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 const PetList = () => {
   const [query, setQuery] = useState("");
   const [showModal, setShowModal] = useState(false);
+
   const { data: pet } = useQuery({
     queryKey: ["pets"],
     queryFn: () => gettAllPets(),
