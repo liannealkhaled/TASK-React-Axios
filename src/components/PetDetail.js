@@ -1,6 +1,6 @@
 import React from "react";
 // import petsData from "../petsData";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { getOnePet, deletePet, changeAdoptStatus } from "../api/pets";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -9,6 +9,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 const PetDetail = () => {
   // const pet = petsData[0];
   const { petId } = useParams();
+  const navigate = useNavigate();
+
   const queryClient = useQueryClient();
 
   // const [query, setQuery] = useState("");
@@ -27,14 +29,16 @@ const PetDetail = () => {
       // setQuery(["pets"]);
       // setShowModal(false);
       queryClient.invalidateQueries(["pets"]);
+      navigate("/PetList");
     },
   });
 
   const { mutate: adoptePet } = useMutation({
     mutationKey: ["pet", petId],
-    mutationFn: () => changeAdoptStatus(),
+    mutationFn: () =>
+      changeAdoptStatus(petId, pet.name, pet.type, pet.image, !pet.adopted),
     onSuccess: () => {
-      queryClient.invalidateQueries(["pets"]);
+      queryClient.invalidateQueries(["pet", petId]);
     },
   });
 
@@ -69,7 +73,7 @@ const PetDetail = () => {
   // });
 
   // if (!pet) return <h1>no pet with this id {id}</h1>;
-  if (!pet) return <Navigate to="/notFound" />;
+  if (!pet) return navigate("/not-found");
   // navigate will send me automatically there , link need to click on it to go there
 
   return (

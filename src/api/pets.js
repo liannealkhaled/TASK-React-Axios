@@ -47,8 +47,13 @@ const deletePet = async (id) => {
   return res.data;
 };
 
-const changeAdoptStatus = async (id) => {
-  const res = await instance.put(`/pets/ ${id}`);
+const changeAdoptStatus = async (id, name, type, image, adopted) => {
+  const res = await instance.put(`/pets/${id}`, {
+    name,
+    type,
+    image,
+    adopted,
+  });
   return res.data;
 };
 
